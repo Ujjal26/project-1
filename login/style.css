@@ -1,0 +1,538 @@
+/* ======================================
+   GLOBAL STYLES AND RESET
+   ====================================== */
+
+/* Reset all default margins, padding, and apply border-box sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ======================================
+   BODY - Background and Layout
+   ====================================== */
+
+/* Main background with gradient colors and flexbox centering */
+body {
+    width: 100%;
+    min-height: 100vh;
+    /* Gradient: blue → purple → pink (135deg angle) */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    /* Keep background fixed when scrolling */
+    background-attachment: fixed;
+    /* Center all content using flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Modern font family for better readability */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ======================================
+   ANIMATED BACKGROUND ELEMENTS
+   ====================================== */
+
+/* Large floating circle - upper left corner */
+body::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    /* Semi-transparent white circle - glassmorphism effect */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -50px;
+    left: -50px;
+    /* Apply floating animation - loops infinitely */
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Larger floating circle - lower right corner */
+body::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    /* Subtler transparency for background depth */
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    bottom: -100px;
+    right: -100px;
+    /* Animation with reverse direction for variety */
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+/* Floating animation - moves elements up and down smoothly */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        /* Elements move 30px up at midpoint */
+        transform: translateY(30px);
+    }
+}
+
+/* ======================================
+   FORM CONTAINER - Glassmorphism Main Card
+   ====================================== */
+
+/* Main signup form with glassmorphic frosted glass effect */
+#form {
+    /* Semi-transparent white background with blur effect */
+    background: rgba(255, 255, 255, 0.15);
+    /* Blur effect creates the "frosted glass" appearance */
+    backdrop-filter: blur(10px);
+    /* Subtle white border to enhance glass-like effect */
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 35px 30px;
+    width: 100%;
+    max-width: 420px;
+    /* Shadow creates depth and separation from background */
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    /* Smooth entrance animation */
+    animation: slideUp 0.6s ease-out;
+    position: relative;
+    z-index: 10;
+}
+
+/* Add form title using ::before pseudo-element */
+#form::before {
+    content: 'Create Account';
+    display: block;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 25px;
+    /* Add subtle shadow to make text stand out */
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+}
+
+/* Slide-up entrance animation - elements appear from below */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        /* Start 30px below final position */
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        /* Settle into place */
+        transform: translateY(0);
+    }
+}
+
+/* ======================================
+   LOGIN LINK SECTION - Enhanced Styling
+   ====================================== */
+
+/* Login paragraph styling - positioned at top of form */
+#login {
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+    /* Add subtle text shadow for better visibility */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Link styling within login paragraph */
+#login a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+    padding-bottom: 2px;
+    letter-spacing: 0.5px;
+}
+
+/* Underline effect for link - hidden by default */
+#login a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ffd700, #ffed4e);
+    transition: width 0.3s ease;
+}
+
+/* Link hover state - show underline and glow */
+#login a:hover {
+    color: #ffed4e;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+/* Link hover - animate underline */
+#login a:hover::after {
+    width: 100%;
+}
+
+/* Link active state - slight color change */
+#login a:active {
+    color: #ffd700;
+    transform: scale(0.98);
+}
+
+/* ======================================
+   FORM LABELS - Enhanced Styling with Class
+   ====================================== */
+
+/* Label styling using form-label class */
+.form-label {
+    /* Display as block to take full width and create spacing */
+    display: block;
+    /* Add margin below the label for spacing before input */
+    margin-bottom: 5px;
+    /* Position label relative for potential pseudo-element positioning */
+    position: relative;
+    /* White text color for contrast against gradient background */
+    color: #ffffff;
+    /* Medium font weight for better readability */
+    font-weight: 500;
+    /* Slightly larger font size than placeholder text */
+    font-size: 14px;
+    /* Add subtle text shadow for better visibility */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    /* Tracking for letter spacing - enhances aesthetics */
+    letter-spacing: 0.5px;
+    /* Smooth transition for any hover effects */
+    transition: all 0.3s ease;
+}
+
+/* Label hover effect - slight opacity change */
+.form-label:hover {
+    /* Subtle glow effect on hover */
+    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+    /* Slight color enhancement */
+    color: #fff;
+}
+
+/* ======================================
+   INPUT FIELDS - All Form Inputs
+   ====================================== */
+
+/* Base styling for all input fields (fname, lname, email, password, confirmPassword) */
+#fname,
+#lname,
+#email,
+#password,
+#confirmPassword {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    /* Semi-transparent background with slight white tint */
+    background: rgba(255, 255, 255, 0.2);
+    /* Subtle border that complements the container */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    font-size: 15px;
+    color: #fff;
+    /* Blur effect applied to inputs as well */
+    backdrop-filter: blur(5px);
+    /* Smooth transitions for all interactions */
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+/* Placeholder text - slightly transparent white */
+#fname::placeholder,
+#lname::placeholder,
+#email::placeholder,
+#password::placeholder,
+#confirmPassword::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ======================================
+   INPUT HOVER STATE - Interaction Feedback
+   ====================================== */
+
+/* Hover state - slightly more opaque and lifted */
+#fname:hover,
+#lname:hover,
+#email:hover,
+#password:hover,
+#confirmPassword:hover {
+    /* Increase transparency on hover */
+    background: rgba(255, 255, 255, 0.25);
+    /* Brighten border on hover */
+    border-color: rgba(255, 255, 255, 0.4);
+    /* Subtle glow effect */
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* ======================================
+   INPUT FOCUS STATE - Active Interaction
+   ====================================== */
+
+/* Focus state - when user clicks on input */
+#fname:focus,
+#lname:focus,
+#email:focus,
+#password:focus,
+#confirmPassword:focus {
+    /* More opaque when focused */
+    background: rgba(255, 255, 255, 0.3);
+    /* Brightest border when focused */
+    border-color: rgba(255, 255, 255, 0.5);
+    /* Stronger glow effect */
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+    /* Slight lift effect for depth */
+    transform: translateY(-2px);
+}
+
+/* ======================================
+   SIGNUP BUTTON - Enhanced Glassmorphism
+   ====================================== */
+
+/* Main button styling with gradient and glass effect */
+#signup {
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 18px;
+    /* Gradient background - lighter to darker left to right */
+    background: linear-gradient(135deg, rgba(58, 119, 224, 0.766) 0%, rgba(58, 119, 224, 0.351) 100%);
+    /* Semi-transparent border */
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    /* Blur effect for glass appearance */
+    backdrop-filter: blur(5px);
+    /* Smooth animation for all changes */
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    /* Initial subtle shadow */
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* ======================================
+   BUTTON HOVER STATE - Enhanced Interaction
+   ====================================== */
+
+/* Hover effects - button becomes more prominent */
+#signup:hover {
+    /* Gradient becomes brighter */
+    background: linear-gradient(135deg, rgba(29, 96, 212, 0.766) 0%, rgba(58, 119, 224, 0.559) 100%);
+    /* Border becomes more visible */
+    border-color: rgba(255, 255, 255, 0.6);
+    /* Stronger shadow effect */
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+    /* Lift effect - button appears to float up */
+    transform: translateY(-2px);
+}
+
+/* ======================================
+   BUTTON ACTIVE STATE - Click Feedback
+   ====================================== */
+
+/* Active state - when user clicks the button */
+#signup:active {
+    /* Return to normal position */
+    transform: translateY(0);
+    /* Reduce shadow for "pressed" effect */
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* ======================================
+   BUTTON DISABLED STATE - Inactive State
+   ====================================== */
+
+/* Disabled state - when form is processing */
+#signup:disabled {
+    /* Fade out to show disabled state */
+    opacity: 0.6;
+    /* Change cursor to indicate disabled */
+    cursor: not-allowed;
+}
+
+/* ======================================
+   ERROR MESSAGE - Alert Styling
+   ====================================== */
+
+/* Error message container styling */
+#error {
+    margin-top: 15px;
+    text-align: center;
+    /* Red/pink color for error indication */
+    color: #ff6b9d;
+    font-size: 14px;
+    font-weight: 500;
+    /* Shake animation draws attention to error */
+    animation: shake 0.3s ease-in-out;
+    /* Semi-transparent red background with glassmorphism */
+    background: rgba(255, 107, 157, 0.15);
+    padding: 12px;
+    border-radius: 8px;
+    /* Subtle red border */
+    border: 1px solid rgba(255, 107, 157, 0.3);
+    /* Apply blur for consistency */
+    backdrop-filter: blur(5px);
+    /* Hidden by default - shown with JS when error occurs */
+    display: none;
+    letter-spacing: 0.3px;
+}
+
+/* Show error message when it contains text */
+#error:not(:empty) {
+    display: block;
+}
+
+/* ======================================
+   SHAKE ANIMATION - Error Feedback
+   ====================================== */
+
+/* Shake animation - rapid left-right movement */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        /* Shake 5px to the left */
+        transform: translateX(-5px);
+    }
+    75% {
+        /* Shake 5px to the right */
+        transform: translateX(5px);
+    }
+}
+
+/* ======================================
+   SUCCESS MESSAGE - Confirmation Styling
+   ====================================== */
+
+/* Success message container styling */
+#success {
+    margin-top: 15px;
+    text-align: center;
+    /* Green color indicates successful action */
+    color: #4ade80;
+    font-size: 14px;
+    font-weight: 500;
+    /* Slide-down animation shows success smoothly */
+    animation: slideDown 0.4s ease-out;
+    /* Semi-transparent green background with glassmorphism */
+    background: rgba(74, 222, 128, 0.15);
+    padding: 12px;
+    border-radius: 8px;
+    /* Subtle green border */
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    /* Apply blur for consistency */
+    backdrop-filter: blur(5px);
+    /* Hidden by default - shown with JS when signup succeeds */
+    display: none;
+    letter-spacing: 0.3px;
+}
+
+/* Show success message when it contains text */
+#success:not(:empty) {
+    display: block;
+}
+
+/* ======================================
+   SLIDE-DOWN ANIMATION - Success Feedback
+   ====================================== */
+
+/* Slide-down animation - elegant appearance from top */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        /* Start 10px above final position */
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        /* Settle into place */
+        transform: translateY(0);
+    }
+}
+
+/* ======================================
+   RESPONSIVE DESIGN - Mobile Optimization
+   ====================================== */
+
+/* Tablet and mobile devices (max width 480px) */
+@media (max-width: 480px) {
+    /* Adjust form padding and margins for smaller screens */
+    #form {
+        padding: 40px 20px;
+        margin: 20px;
+        border-radius: 15px;
+    }
+
+    /* Make title smaller on mobile */
+    #form::before {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    /* Reduce input and button font sizes and padding */
+    #fname,
+    #lname,
+    #email,
+    #password,
+    #confirmPassword,
+    #signup {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+
+    /* Adjust message font sizes */
+    #error,
+    #success {
+        font-size: 13px;
+        padding: 10px;
+    }
+}
+
+/* ======================================
+   ACCESSIBILITY - Light Mode Support
+   ====================================== */
+
+/* Adjustments for users who prefer light mode */
+@media (prefers-color-scheme: light) {
+    /* Increase transparency slightly for light mode visibility */
+    #form {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Make input backgrounds more opaque in light mode */
+    #fname,
+    #lname,
+    #email,
+    #password,
+    #confirmPassword {
+        background: rgba(255, 255, 255, 0.35);
+        border-color: rgba(255, 255, 255, 0.5);
+        /* Darker text for better contrast */
+        color: #333;
+    }
+
+    /* Darker placeholder text for light mode */
+    #fname::placeholder,
+    #lname::placeholder,
+    #email::placeholder,
+    #password::placeholder,
+    #confirmPassword::placeholder {
+        color: rgba(50, 50, 50, 0.5);
+    }
+}
+
+/* ======================================
+   END OF STYLESHEET
+   ====================================== */

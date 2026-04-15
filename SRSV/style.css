@@ -1,0 +1,160 @@
+:root {
+    --primary-orange: #e67e22;
+    --secondary-blue: #3498db;
+    --glass-bg: rgba(255, 255, 255, 0.95);
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+#heading h2 {
+    letter-spacing: 1px;
+}
+
+.custom-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+.card-header-styled {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    color: white;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.subject-box {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 5px solid var(--secondary-blue);
+}
+
+#PHARMACOLOGY .subject-box { border-color: #3498db; }
+#BIOCHEMISTRY .subject-box { border-color: #2ecc71; }
+#HOSPITAL .subject-box { border-color: #9b59b6; }
+#home .subject-box { border-color: #e67e22; }
+
+.modalbtn {
+    background: #2c3e50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.modalbtn:hover {
+    background: var(--primary-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3);
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    overflow-y: auto;
+}
+
+.modal-container {
+    position: relative;
+    background-color: #fff;
+    margin: 2% auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 1100px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    animation: slideIn 0.3s ease-out;
+}
+
+.modal-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-title-text {
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+}
+
+.close-x-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-x-btn:hover {
+    color: #dc3545;
+}
+
+.modal-body-content {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    background: #eee;
+}
+
+.responsive-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.modal-footer-bar {
+    padding: 10px 25px;
+    text-align: right;
+    border-top: 1px solid #dee2e6;
+}
+
+.btn-secondary-close {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-secondary-close:hover {
+    background: #5a6268;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .container { padding: 15px; }
+    .card-header-styled { font-size: 1.2rem; }
+    .modalbtn { width: 100%; }
+    .modal-container { width: 95%; margin: 5% auto; }
+    .modal-body-content { height: 60vh; }
+}

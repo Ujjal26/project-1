@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="logo/x-icon" href="srsv logo.jpeg">
+</head>
+
+<body>
+    <form id="form">
+        <p id="login">Already have an account? <a href="login.html">Login here</a></p>
+        <label for="fname" class="form-label">First Name:</label>
+        <br />
+        <input type="text" id="fname" required />
+        <br />
+        <label for="lname" class="form-label">Last Name:</label>
+        <br />
+        <input type="text" id="lname" required />
+        <br />
+        <label for="email" class="form-label">Email:</label>
+        <br />
+        <input type="text" id="email" required />
+        <br />
+        <label for="password" class="form-label">Password:</label>
+        <br />
+        <input type="password" id="password" required maxlength="8" />
+        <br />
+        <label for="confirmPassword" class="form-label">Confirm Password:</label>
+        <br />
+        <input type="password" id="confirmPassword" required maxlength="8" />
+        <br />
+        <button type="button" id="signup">Sign Up</button>
+    </form>
+    <p id="error"></p>
+    <p id="success"></p>
+    <script src="script.js"></script>
+</body>
+
+</html>
